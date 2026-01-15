@@ -18,47 +18,30 @@ topBtn?.addEventListener("click", () => {
 });
 
 /* =========================
-   REVEAL ON SCROLL (SMOOTH)
+   REVEAL ON SCROLL
 ========================= */
 const revealElements = document.querySelectorAll(".reveal");
+let ticking = false;
 
 function revealOnScroll() {
   revealElements.forEach(el => {
     if (el.classList.contains("active")) return;
 
-    if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 80) {
       el.classList.add("active");
     }
   });
 }
 
-window.addEventListener("scroll", revealOnScroll, { passive: true });
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      revealOnScroll();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
 window.addEventListener("load", revealOnScroll);
-
-/* =========================
-   GALLERY SLIDER (SMOOTH)
-========================= */
-const slides = document.querySelectorAll(".gallery-slide");
-const dots = document.querySelectorAll(".dot");
-let currentSlide = 0;
-
-function updateSlider(index) {
-  slides.forEach((slide, i) =>
-    slide.classList.toggle("active", i === index)
-  );
-
-  dots.forEach((dot, i) =>
-    dot.classList.toggle("active", i === index)
-  );
-}
-
-// Initial state
-if (slides.length) updateSlider(currentSlide);
-
-// Auto play
-setInterval(() => {
-  if (!slides.length) return;
-
-  currentSlide = (currentSlide + 1) % slides.length;
-  updateSlider(currentSlide);
-}, 3500);
