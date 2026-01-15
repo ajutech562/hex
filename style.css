@@ -1,0 +1,437 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0f1c;
+  color: #ffffff;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00aaff;
+}
+
+nav a {
+  margin-left: 25px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #00aaff;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+/* =========================
+   HERO SECTION
+========================= */
+/* SECTION DESCRIPTION TEXT */
+.section-desc {
+  max-width: 750px;
+  margin: -20px auto 50px auto; /* Pull closer to heading */
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #cccccc;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+
+  /* Slide 1 = main background */
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("woker.jpg");
+  background-size: cover;
+  background-position: center;
+  animation: heroBackground 8s infinite;
+}
+
+/* TEXT ALWAYS ON TOP */
+.hero h1 {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* PSEUDO-ELEMENT FOR SLIDE 2 */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 20;
+  z-index: 1;
+  animation: fadeSlider 8s infinite ease-in-out;
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("plan.jpg");
+}
+
+/* FADE ANIMATION FOR PSEUDO-ELEMENT */
+@keyframes fadeSlider {
+  0%, 49%   { opacity: 0; }
+  50%, 99%  { opacity: 1; }
+  100%      { opacity: 0; }
+}
+
+/* MAIN HERO BACKGROUND KEYFRAMES (2 IMAGE LOOP) */
+@keyframes heroBackground {
+  0%, 49%   { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("woker.jpg"); }
+  50%, 100% { background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("plan.jpg"); }
+}
+
+/* =========================
+   RESPONSIVE HERO TEXT
+========================= */
+@media (max-width: 1024px) {
+  .hero h1 { font-size: 38px; }
+  .hero p  { font-size: 18px; }
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  .hero p  { font-size: 16px; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 26px; }
+  .hero p  { font-size: 14px; }
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+section {
+  padding: 90px 10%;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #00aaff;
+}
+
+/* =========================
+   ABOUT
+========================= */
+.about-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.about-box {
+  background: linear-gradient(145deg, #001f3f, #221c38);
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.about-box img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-box h3 {
+  margin-top: 15px;
+  color: #00aaff;
+}
+
+.about-box p {
+  padding: 0 15px 20px;
+  color: #cccccc;
+  font-size: 15px;
+}
+
+.about-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 170, 255, 0.25);
+}
+
+.about-box:hover img {
+  transform: scale(1.06);
+}
+
+/* =========================
+   SERVICES (OPTIMIZED)
+========================= */
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  
+}
+
+.service-card {
+  position: relative;
+  height: 240px;
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  background-size: cover;
+  
+  background-position: center;
+  overflow: hidden;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  will-change: transform;
+  transform: translateZ(0);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.service-card h3,
+.service-card p {
+  position: relative;
+  z-index: 1;
+}
+
+.service-card h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #dddddd;
+  line-height: 1.4;
+}
+
+.service-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0, 170, 255, 0.3);
+}
+
+/* SERVICE BACKGROUNDS */
+.dm { background-image: url("https://images.unsplash.com/photo-1557838923-2985c318be48"); }
+.gd { background-image: url("https://images.unsplash.com/photo-1545235617-9465d2a55698"); }
+.wd { background-image: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d"); }
+.ad { background-image: url("https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"); }
+.cctv { background-image: url("cctv.jpg"); }
+.ha { background-image: url("https://images.unsplash.com/photo-1581090700227-1e37b190418e"); }
+.mep { background-image: url("images.jpg"); }
+.id { background-image: url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"); }
+
+/* =========================
+   PROCESS
+========================= */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.process-card {
+  background: linear-gradient(145deg, #001f3f, #221c38);
+  padding: 30px;
+  border-radius: 18px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.process-card h3 {
+  color: #00aaff;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  color: #cccccc;
+  font-size: 15px;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+}
+.process-icon {
+  font-size: 40px;
+  color: #00aaff;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+/* Optional hover animation */
+.process-card:hover .process-icon {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-left p {
+  color: #cccccc;
+}
+
+.contact-right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-right input,
+.contact-right textarea {
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+}
+
+.contact-right button {
+  padding: 12px;
+  background: #00aaff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background: #000000;
+  padding: 20px;
+  text-align: center;
+}
+
+/* =========================
+   FLOATING BUTTONS
+========================= */
+.mail-btn {
+  position: fixed;
+  left: 15px;
+  bottom: 50%;
+  background: #00aaff;
+  padding: 12px;
+  border-radius: 50%;
+  color: #000000;
+}
+
+#topBtn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  padding: 12px;
+  border-radius: 50%;
+  background: #00aaff;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
