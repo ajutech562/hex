@@ -275,9 +275,9 @@ h2 {
 .gd { background-image: url("https://images.unsplash.com/photo-1545235617-9465d2a55698"); }
 .wd { background-image: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d"); }
 .ad { background-image: url("https://images.unsplash.com/photo-1511707171634-5f897ff02aa9"); }
-.cctv { background-image: url("cctv.jpg"); }
+.cctv { background-image: url("https://media.istockphoto.com/id/1192103258/photo/close-up-of-surveillance-camera-installation-male-hand-holds-cctv-camera.webp?a=1&b=1&s=612x612&w=0&k=20&c=texl4jOb2iFyVTq-8jl31_vODxFWYJnMOaQ_1eJO_Aw="); }
 .ha { background-image: url("https://images.unsplash.com/photo-1581090700227-1e37b190418e"); }
-.mep { background-image: url("images.jpg"); }
+.mep { background-image: url("https://media.istockphoto.com/id/1250290589/photo/wire-installation.webp?a=1&b=1&s=612x612&w=0&k=20&c=a2VeAcSsU4birSYo78VyLVQO_ncXtCAdCAl1BUx9g38="); }
 .id { background-image: url("https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"); }
 
 /* =========================
@@ -435,6 +435,7 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
